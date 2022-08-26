@@ -278,8 +278,11 @@ public:
 
     // Обменивает содержимое списков за время O(1)
     void swap(SingleLinkedList& other) noexcept {
-        std::swap(head_, other.head_);
         std::swap(size_, other.size_);
+        
+        Node temp_head = head_; 
+        head_.next_node = other.head_.next_node; 
+        other.head_.next_node = temp_head.next_node; 
     }
 
     // Возвращает итератор, указывающий на позицию перед первым элементом односвязного списка.
